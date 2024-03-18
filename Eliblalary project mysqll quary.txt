@@ -1,0 +1,49 @@
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database Eliblary;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> create table e_book(callno varchar(100)primary key,name varchar(100),author varchar(100),publisher varchar(100),quantity int(100),issued int(100));
+ERROR 1046 (3D000): No database selected
+mysql> use Eliblary;
+Database changed
+mysql> create table e_book(callno varchar(100)primary key,name varchar(100),author varchar(100),publisher varchar(100),quantity int(100),issued int(100));
+Query OK, 0 rows affected, 2 warnings (0.04 sec)
+
+mysql> create table e_issuebook(callno varchar(100),forgain key (callno)references e_book(callno),studentid varchar(100),studentname varchar(100),issueddate date,returnstatus date);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key (callno)references e_book(callno),studentid varchar(100),studentname varchar' at line 1
+mysql> create table e_issuebook(callno varchar(100),foreign key (callno)references e_book(callno),studentid varchar(100),studentname varchar(100),issueddate date,returnstatus date);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> create table e_librarian(id int(100)primary key auto_increment,name varchar(100),email varchar(100),password varchar(100),mobile long(100));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(100))' at line 1
+mysql> create table e_librarian(id int(100)primary key auto_increment,name varchar(100),email varchar(100),password varchar(100),mobile long);
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> insert into e_librarian value(1,"vishwajeet dongre","vishwajeetdongre@gmail.com","Vishwa@123","9765031609";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> insert into e_librarian value(1,"vishwajeet dongre","vishwajeetdongre@gmail.com","Vishwa@123",9765031609;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> insert into e_librarian value(1,"vishwajeet dongre","vishwajeetdongre@gmail.com","Vishwa@123",9765031609);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from e_librarian;
++----+-------------------+----------------------------+------------+------------+
+| id | name              | email                      | password   | mobile     |
++----+-------------------+----------------------------+------------+------------+
+|  1 | vishwajeet dongre | vishwajeetdongre@gmail.com | Vishwa@123 | 9765031609 |
++----+-------------------+----------------------------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from e_librarian;
++----+-------------------+----------------------------+------------+------------+
+| id | name              | email                      | password   | mobile     |
++----+-------------------+----------------------------+------------+------------+
+|  1 | vishwajeet dongre | vishwajeetdongre@gmail.com | Vishwa@123 | 9765031609 |
++----+-------------------+----------------------------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+
